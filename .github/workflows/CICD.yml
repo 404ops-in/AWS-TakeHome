@@ -21,4 +21,4 @@ jobs:
         run: cd terraform && terraform plan -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_KEY }}" -out plan.tfout   
       
       - name: Terraform Apply
-        run: cd terraform && terraform apply -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_KEY }}"  "plan.tfout"  
+        run: cd terraform && terraform apply -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_KEY }}"   -auto-approve  
