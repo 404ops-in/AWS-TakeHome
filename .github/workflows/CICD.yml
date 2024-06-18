@@ -3,9 +3,9 @@ name: CICD
 
 on:
   push:
-    branches: [ "Dev" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "Dev" ]
+    branches: [ "main" ]
 
   workflow_dispatch:
 
@@ -19,6 +19,5 @@ jobs:
         run: cd terraform && terraform init
       - name: Terraform plan
         run: cd terraform && terraform plan -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_KEY }}" -out plan.tfout   
-      
       - name: Terraform Apply
         run: cd terraform && terraform apply -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_KEY }}"   -auto-approve  
