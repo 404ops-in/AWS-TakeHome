@@ -15,7 +15,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
+      - name: Terraform checkout
+        run: cd terraform
+      - name: Terraform init
+        run: terraform init
       - name: Terraform plan
         run: terraform plan -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_KEY }}" -out plan.tfout   
       
